@@ -8,8 +8,35 @@
 :root{--g:#39ff14;--b:#00aaff}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#020402;color:#fff}
-body{overflow-x:hidden;background:#020402 url("pzzcbg1.png") center top/cover fixed no-repeat}
-body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(rgba(0,30,0,.32),rgba(0,0,0,.5));mix-blend-mode:multiply}
+body{overflow-x:hidden}
+
+/* TOP SECTION WITH BACKGROUND IMAGE */
+.top-section {
+  position: relative;
+  width: 100%;
+  background: #020402 url("pzzcbg1.png") center top/cover no-repeat;
+  padding-bottom: 20px;
+}
+
+/* OVERLAY FOR TOP SECTION ONLY */
+.top-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(rgba(0,30,0,.32),rgba(0,0,0,.5));
+  mix-blend-mode: multiply;
+}
+
+.top-content {
+  position: relative;
+  z-index: 2; /* Keeps text, images, and menu above the dark overlay */
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 12px 10px;
+}
+
 .page{max-width:1200px;margin:auto;padding:10px 12px 45px}
 
 .title{
@@ -250,155 +277,80 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
 
 <body>
 
+<header class="top-section">
+  <div class="top-content">
+    <div class="menu-wrap">
+      <button class="hamb" id="hamb" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav class="menu" id="menu">
+        <a href="https://www.pizza-coin.org/">Option 1</a>
+        <a href="https://www.pizza-coin.org/">Option 2</a>
+        <a href="https://www.pizza-coin.org/">Option 3</a>
+        <a href="https://www.pizza-coin.org/">Option 4</a>
+        <a href="https://www.pizza-coin.org/">Option 5</a>
+        <a href="https://www.pizza-coin.org/">Option 6</a>
+        <a href="https://www.pizza-coin.org/">Option 7</a>
+      </nav>
+    </div>
+
+    <h1 class="title">PIZZA COIN CRYPTO</h1>
+
+    <div class="hero">
+      <img class="hero-img" src="PZZC FULL SIZE UP (1).png" alt="Pizza Coin Crypto">
+    </div>
+  </div>
+</header>
+
 <div class="page">
+  <section class="buy">
+    <a class="btn green" href="https://august2024xx-cpu.github.io/anycryptopay2/">
+      <span class="hand">👆</span>
+      <span class="btn-text">
+        PROFIT BUY PIZZA COIN<br>WITH VISA, MC OR PAYPAL
+        <span class="sub">CLICK HERE TO BUY</span>
+      </span>
+      <img src="ppal2.png" alt="PayPal / Card Icon" class="btn-icon">
+    </a>
 
-<div class="menu-wrap">
+    <a class="btn blue" href="https://august2024xx-cpu.github.io/anycryptopay2/">
+      <span class="hand">👆</span>
+      <span class="btn-text">
+        PROFIT BUY PIZZA COIN<br>WITH ANY CRYPTO HERE
+        <span class="sub">CLICK HERE TO BUY</span>
+      </span>
+      <img src="crypto2.png" alt="Crypto Icon" class="btn-icon">
+    </a>
+  </section>
 
-<button
- class="hamb"
- id="hamb"
- aria-label="Open menu"
- aria-expanded="false">
-☰
-</button>
+  <div class="notice">
+    🍕 ©️PIZZA COIN CRYPTO 🍕<br><br>
+    FOR PEOPLE WHO LIKE<br>
+    MORE CRYPTO 🪙 ✅<br>
+    MORE CASH   💵 ✅<br>
+    MORE PIZZA   🍕 ✅<br><br>
+    ALL ARE WELCOME 😀 ✅<br>
+  </div>
 
-<nav class="menu" id="menu">
-
-<a href="https://www.pizza-coin.org/">Option 1</a>
-<a href="https://www.pizza-coin.org/">Option 2</a>
-<a href="https://www.pizza-coin.org/">Option 3</a>
-<a href="https://www.pizza-coin.org/">Option 4</a>
-<a href="https://www.pizza-coin.org/">Option 5</a>
-<a href="https://www.pizza-coin.org/">Option 6</a>
-<a href="https://www.pizza-coin.org/">Option 7</a>
-
-</nav>
+  <div class="foot">
+    WWW.PIZZA-COIN.ORG
+  </div>
 </div>
-
-
-<h1 class="title">
-PIZZA COIN CRYPTO
-</h1>
-
-
-<div class="hero">
-
-<img
- class="hero-img"
- src="PZZC FULL SIZE UP (1).png"
- alt="Pizza Coin Crypto"
->
-
-</div>
-
-
-<section class="buy">
-
-
-<a
- class="btn green"
- href="https://august2024xx-cpu.github.io/anycryptopay2/"
->
-
-<span class="hand">👆</span>
-
-<span class="btn-text">
-PROFIT BUY PIZZA COIN
-<br>
-WITH VISA, MC OR PAYPAL
-
-<span class="sub">
-CLICK HERE TO BUY
-</span>
-
-</span>
-
-<img src="ppal2.png" alt="PayPal / Card Icon" class="btn-icon">
-</a>
-
-
-<a
- class="btn blue"
- href="https://august2024xx-cpu.github.io/anycryptopay2/"
->
-
-<span class="hand">👆</span>
-
-<span class="btn-text">
-PROFIT BUY PIZZA COIN
-<br>
-WITH ANY CRYPTO HERE
-
-<span class="sub">
-CLICK HERE TO BUY
-</span>
-
-</span>
-
-<img src="crypto2.png" alt="Crypto Icon" class="btn-icon">
-</a>
-
-</section>
-
-
-<div class="notice">
-🍕 ©️PIZZA COIN CRYPTO 🍕
-<br>
- <br>
-
-FOR PEOPLE WHO LIKE
-<br>
-MORE CRYPTO 🪙 ✅<br>
-MORE CASH   💵 ✅<br>
-MORE PIZZA   🍕 ✅<br>
- <br>
-ALL ARE WELCOME 😀 ✅
-<br>
-
-</div>
-
-
-<div class="foot">
-WWW.PIZZA-COIN.ORG
-</div>
-
-</div>
-
 
 <script>
-
 const h = document.getElementById("hamb");
 const m = document.getElementById("menu");
 
 h.onclick = function(e){
-
- e.stopPropagation();
-
- let open = m.classList.toggle("open");
-
- h.setAttribute(
-    "aria-expanded",
-    open
- );
-
+  e.stopPropagation();
+  let open = m.classList.toggle("open");
+  h.setAttribute("aria-expanded", open);
 };
-
 
 document.onclick = function(e){
-
- if(!e.target.closest(".menu-wrap")){
-
+  if(!e.target.closest(".menu-wrap")){
     m.classList.remove("open");
-
-    h.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
- }
-
+    h.setAttribute("aria-expanded", "false");
+  }
 };
-
 </script>
 
 </body>
