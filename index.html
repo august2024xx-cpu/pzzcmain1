@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PIZZA COIN CRYPTO</title>
+<style>
+:root{--g:#39ff14;--b:#00aaff}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#020402;color:#fff}
+body{overflow-x:hidden;background:#020402 url("data:image/webp;base64,REPLACE_WITH_EMBEDDED_IMAGE_DATA") center top/cover fixed no-repeat}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(rgba(0,30,0,.32),rgba(0,0,0,.5));mix-blend-mode:multiply}
+.page{max-width:1200px;margin:auto;padding:10px 12px 45px}
+
+.title{
+ text-align:center;
+ margin:4px 70px 14px;
+ font-size:clamp(34px,6vw,78px);
+ font-weight:1000;
+ line-height:.95;
+ color:var(--g);
+ letter-spacing:3px;
+ text-shadow:0 0 5px #fff,0 0 12px var(--g),0 0 28px var(--g),0 0 50px #0f0
+}
+
+.hero{
+ display:block;
+ width:min(100%,1100px);
+ margin:auto;
+ border:4px solid var(--g);
+ border-radius:20px;
+ box-shadow:0 0 8px #fff,0 0 20px var(--g),0 0 45px var(--g)
+}
+
+.hero-img{
+ display:block;
+ width:100%;
+ height:auto;
+ border-radius:15px
+}
+
+/* TOP RIGHT HAMBURGER */
+.menu-wrap{
+ position:absolute;
+ right:14px;
+ top:12px;
+ z-index:20
+}
+
+.hamb{
+ width:58px;
+ height:58px;
+ border:3px solid var(--g);
+ border-radius:12px;
+ background:#000d;
+ color:var(--g);
+ font-size:34px;
+ font-weight:900;
+ cursor:pointer;
+ box-shadow:0 0 8px #fff,0 0 22px var(--g);
+ text-shadow:0 0 10px var(--g)
+}
+
+.menu{
+ display:none;
+ position:absolute;
+ right:0;
+ top:68px;
+ width:230px;
+ padding:10px;
+ background:#000f;
+ border:3px solid var(--g);
+ border-radius:16px;
+ box-shadow:0 0 10px #fff,0 0 30px var(--g)
+}
+
+.menu.open{
+ display:block
+}
+
+.menu a{
+ display:block;
+ padding:13px 12px;
+ margin:5px 0;
+ border:2px solid var(--g);
+ border-radius:10px;
+ color:#fff;
+ text-decoration:none;
+ text-align:center;
+ font-size:20px;
+ font-weight:900;
+ text-shadow:0 0 8px var(--g);
+ background:#001500
+}
+
+/* BUY BUTTONS */
+.buy{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:22px;
+ margin:20px auto 0;
+ max-width:1120px;
+ padding:14px;
+ background:#000b;
+ border:2px solid #ffffff33;
+ border-radius:26px
+}
+
+.btn{
+ position:relative;
+ min-height:190px;
+ border:5px solid currentColor;
+ border-radius:28px;
+ background:#000c;
+ color:#fff;
+ text-decoration:none;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ font-weight:1000;
+ font-size:clamp(25px,4vw,52px);
+ line-height:1.05;
+ text-transform:uppercase;
+ transition:.12s
+}
+
+.btn:hover{
+ transform:scale(1.025);
+ filter:brightness(1.3)
+}
+
+.green{
+ color:var(--g);
+ text-shadow:0 0 4px #fff,0 0 12px var(--g),0 0 28px var(--g);
+ box-shadow:0 0 8px #fff,0 0 24px var(--g),0 0 50px #39ff1499
+}
+
+.blue{
+ color:#19c7ff;
+ text-shadow:0 0 4px #fff,0 0 12px var(--b),0 0 28px var(--b);
+ box-shadow:0 0 8px #fff,0 0 24px var(--b),0 0 50px #00aaff99
+}
+
+/* FLICKERING CLICK HAND */
+.hand{
+ position:absolute;
+ right:8px;
+ top: 1in;
+ font-size:clamp(45px,7vw,78px);
+ animation:
+    flicker .22s steps(2,end) infinite,
+    bounce .42s ease-in-out infinite alternate;
+ filter:
+    drop-shadow(0 0 3px #fff)
+    drop-shadow(0 0 10px currentColor)
+    drop-shadow(0 0 20px currentColor)
+}
+
+/* EXPLANATORY BUTTON ICONS */
+.btn-icon {
+ position: absolute;
+ left: 14px;
+ bottom: 14px;
+ width: 45px;
+ height: auto;
+ filter: drop-shadow(0 0 5px currentColor);
+}
+
+@keyframes flicker{
+ 0%,100%{opacity:1}
+ 20%{opacity:.35}
+ 40%{opacity:1}
+ 60%{opacity:.4}
+ 80%{opacity:1}
+}
+
+@keyframes bounce{
+ from{transform:translateY(0) rotate(-8deg)}
+ to{transform:translateY(12px) rotate(5deg)}
+}
+
+.sub{
+ display:block;
+ margin-top:12px;
+ font-size:.4em;
+ letter-spacing:2px;
+ color:#fff
+}
+
+.notice{
+ margin:20px auto;
+ padding:14px;
+ max-width:900px;
+ text-align:center;
+ background:#000c;
+ border:2px solid var(--g);
+ border-radius:16px;
+ font-weight:900;
+ font-size:clamp(16px,2.5vw,26px);
+ box-shadow:0 0 20px #39ff1466
+}
+
+.foot{
+ text-align:center;
+ margin-top:20px;
+ font-weight:900;
+ text-shadow:0 0 10px var(--g)
+}
+
+@media(max-width:760px){
+ .title{
+    margin-right:64px;
+    letter-spacing:1px
+ }
+
+ .buy{
+    grid-template-columns:1fr;
+    padding:10px
+ }
+
+ .btn{
+    min-height:155px;
+    border-radius:22px
+ }
+
+ .hamb{
+    width:50px;
+    height:50px;
+    font-size:29px
+ }
+
+ .menu{
+    top:58px
+ }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- HAMBURGER MENU -->
+<div class="menu-wrap">
+
+<button
+ class="hamb"
+ id="hamb"
+ aria-label="Open menu"
+ aria-expanded="false">
+☰
+</button>
+
+<nav class="menu" id="menu">
+
+<a href="https://www.pizza-coin.org/">Option 1</a>
+<a href="https://www.pizza-coin.org/">Option 2</a>
+<a href="https://www.pizza-coin.org/">Option 3</a>
+<a href="https://www.pizza-coin.org/">Option 4</a>
+<a href="https://www.pizza-coin.org/">Option 5</a>
+<a href="https://www.pizza-coin.org/">Option 6</a>
+<a href="https://www.pizza-coin.org/">Option 7</a>
+
+</nav>
+</div>
+
+
+<!-- TITLE -->
+<h1 class="title">
+PIZZA COIN CRYPTO
+</h1>
+
+
+<!-- MAIN PIZZA COIN IMAGE -->
+<div class="hero">
+
+<img
+ class="hero-img"
+ src="PZZC FULL SIZE UP (1).png"
+ alt="Pizza Coin Crypto"
+>
+
+</div>
+
+
+<!-- TWO LARGE BUY BUTTONS -->
+<section class="buy">
+
+
+<!-- VISA / MASTERCARD / PAYPAL -->
+<a
+ class="btn green"
+ href="https://august2024xx-cpu.github.io/anycryptopay2/"
+>
+
+<span class="hand">👆</span>
+
+<span>
+PROFIT BUY PIZZA COIN
+<br>
+WITH VISA, MC OR PAYPAL
+
+<span class="sub">
+CLICK HERE TO BUY
+</span>
+
+</span>
+
+<img src="ppal2.png" alt="PayPal / Card Icon" class="btn-icon">
+</a>
+
+
+<!-- CRYPTO -->
+<a
+ class="btn blue"
+ href="https://august2024xx-cpu.github.io/anycryptopay2/"
+>
+
+<span class="hand">👆</span>
+
+<span>
+PROFIT BUY PIZZA COIN
+<br>
+WITH ANY CRYPTO HERE
+
+<span class="sub">
+CLICK HERE TO BUY
+</span>
+
+</span>
+
+<img src="crypto2.png" alt="Crypto Icon" class="btn-icon">
+</a>
+
+</section>
+
+
+<div class="notice">
+🍕 ©️PIZZA COIN CRYPTO 🍕
+<br>
+ <br>
+
+
+
+
+FOR PEOPLE WHO LIKE
+<br>
+MORE CRYPTO 🪙 ✅<ln>
+MORE CASH   💵 ✅<ln>
+MORE PIZZA   🍕 ✅<ln>
+ <br>
+ALL ARE WELCOME 😀 ✅
+<br>
+
+
+</div>
+
+
+<div class="foot">
+WWW.PIZZA-COIN.ORG
+</div>
+
+</div>
+
+
+<script>
+
+const h = document.getElementById("hamb");
+const m = document.getElementById("menu");
+
+h.onclick = function(e){
+
+ e.stopPropagation();
+
+ let open = m.classList.toggle("open");
+
+ h.setAttribute(
+    "aria-expanded",
+    open
+ );
+
+};
+
+
+document.onclick = function(e){
+
+ if(!e.target.closest(".menu-wrap")){
+
+    m.classList.remove("open");
+
+    h.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+ }
+
+};
+
+</script>
+
+</body>
+</html>
