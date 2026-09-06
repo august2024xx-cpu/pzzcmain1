@@ -8,7 +8,7 @@
 :root{--g:#39ff14;--b:#00aaff}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#020402;color:#fff}
-body{overflow-x:hidden;background:#020402 url("data:image/webp;base64,REPLACE_WITH_EMBEDDED_IMAGE_DATA") center top/cover fixed no-repeat}
+body{overflow-x:hidden;background:#020402 url("pzzcbg1.png") center top/cover fixed no-repeat}
 body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(rgba(0,30,0,.32),rgba(0,0,0,.5));mix-blend-mode:multiply}
 .page{max-width:1200px;margin:auto;padding:10px 12px 45px}
 
@@ -115,6 +115,7 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
  color:#fff;
  text-decoration:none;
  display:flex;
+ flex-direction:column;
  align-items:center;
  justify-content:center;
  text-align:center;
@@ -122,7 +123,8 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
  font-size:clamp(25px,4vw,52px);
  line-height:1.05;
  text-transform:uppercase;
- transition:.12s
+ transition:.12s;
+ padding:20px 14px;
 }
 
 .btn:hover{
@@ -159,11 +161,11 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
 
 /* EXPLANATORY BUTTON ICONS */
 .btn-icon {
- position: absolute;
- left: 14px;
- bottom: 14px;
- width: 180px;
- height: auto;
+ display:block;
+ margin-top:12px;
+ width:clamp(80px, 20vw, 160px);
+ max-width:100%;
+ height:auto;
  filter: drop-shadow(0 0 5px currentColor);
 }
 
@@ -241,7 +243,6 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
 
 <div class="page">
 
-<!-- HAMBURGER MENU -->
 <div class="menu-wrap">
 
 <button
@@ -266,13 +267,11 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
 </div>
 
 
-<!-- TITLE -->
 <h1 class="title">
 PIZZA COIN CRYPTO
 </h1>
 
 
-<!-- MAIN PIZZA COIN IMAGE -->
 <div class="hero">
 
 <img
@@ -284,11 +283,9 @@ PIZZA COIN CRYPTO
 </div>
 
 
-<!-- TWO LARGE BUY BUTTONS -->
 <section class="buy">
 
 
-<!-- VISA / MASTERCARD / PAYPAL -->
 <a
  class="btn green"
  href="https://august2024xx-cpu.github.io/anycryptopay2/"
@@ -311,7 +308,6 @@ CLICK HERE TO BUY
 </a>
 
 
-<!-- CRYPTO -->
 <a
  class="btn blue"
  href="https://august2024xx-cpu.github.io/anycryptopay2/"
@@ -346,9 +342,9 @@ CLICK HERE TO BUY
 
 FOR PEOPLE WHO LIKE
 <br>
-MORE CRYPTO 🪙 ✅<ln>
-MORE CASH   💵 ✅<ln>
-MORE PIZZA   🍕 ✅<ln>
+MORE CRYPTO 🪙 ✅<br>
+MORE CASH   💵 ✅<br>
+MORE PIZZA   🍕 ✅<br>
  <br>
 ALL ARE WELCOME 😀 ✅
 <br>
