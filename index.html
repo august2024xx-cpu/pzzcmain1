@@ -109,6 +109,7 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
 .btn{
  position:relative;
  min-height:190px;
+ height:auto;
  border:5px solid currentColor;
  border-radius:28px;
  background:#000c;
@@ -117,14 +118,20 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
  display:flex;
  flex-direction:column;
  align-items:center;
- justify-content:center;
+ justify-content:space-between;
  text-align:center;
  font-weight:1000;
- font-size:clamp(25px,4vw,52px);
+ font-size:clamp(22px,3.8vw,52px);
  line-height:1.05;
  text-transform:uppercase;
  transition:.12s;
- padding:20px 14px;
+ padding:25px 20px;
+}
+
+.btn-text {
+ display:block;
+ width:100%;
+ margin-bottom:15px;
 }
 
 .btn:hover{
@@ -147,9 +154,9 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
 /* FLICKERING CLICK HAND */
 .hand{
  position:absolute;
- right:8px;
- top: 1in;
- font-size:clamp(45px,7vw,78px);
+ right:12px;
+ top:12px;
+ font-size:clamp(35px,5vw,65px);
  animation:
     flicker .22s steps(2,end) infinite,
     bounce .42s ease-in-out infinite alternate;
@@ -161,11 +168,12 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
 
 /* EXPLANATORY BUTTON ICONS */
 .btn-icon {
+ position:static;
  display:block;
- margin-top:12px;
- width:clamp(80px, 20vw, 160px);
- max-width:100%;
+ width:clamp(90px, 22vw, 160px);
  height:auto;
+ max-width:100%;
+ margin:10px auto 0;
  filter: drop-shadow(0 0 5px currentColor);
 }
 
@@ -184,7 +192,7 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
 
 .sub{
  display:block;
- margin-top:12px;
+ margin-top:8px;
  font-size:.4em;
  letter-spacing:2px;
  color:#fff
@@ -222,8 +230,9 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
  }
 
  .btn{
-    min-height:155px;
-    border-radius:22px
+    min-height:auto;
+    border-radius:22px;
+    padding:20px 14px;
  }
 
  .hamb{
@@ -293,7 +302,7 @@ PIZZA COIN CRYPTO
 
 <span class="hand">👆</span>
 
-<span>
+<span class="btn-text">
 PROFIT BUY PIZZA COIN
 <br>
 WITH VISA, MC OR PAYPAL
@@ -315,7 +324,7 @@ CLICK HERE TO BUY
 
 <span class="hand">👆</span>
 
-<span>
+<span class="btn-text">
 PROFIT BUY PIZZA COIN
 <br>
 WITH ANY CRYPTO HERE
@@ -337,9 +346,6 @@ CLICK HERE TO BUY
 <br>
  <br>
 
-
-
-
 FOR PEOPLE WHO LIKE
 <br>
 MORE CRYPTO 🪙 ✅<br>
@@ -348,7 +354,6 @@ MORE PIZZA   🍕 ✅<br>
  <br>
 ALL ARE WELCOME 😀 ✅
 <br>
-
 
 </div>
 
