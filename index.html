@@ -14,7 +14,7 @@ body{overflow-x:hidden}
 .top-section {
   position: relative;
   width: 100%;
-  background: #020402 url("pzzcbg1.png") center top/cover no-repeat;
+  background: #020402;
   padding-bottom: 20px;
 }
 
@@ -234,32 +234,82 @@ body{overflow-x:hidden}
  text-shadow:0 0 10px var(--g)
 }
 
+/* FLOATING EMOJIS */
+.emoji-zone {
+  position: fixed; top: 0; bottom: 0; width: 13vw; min-width: 75px; max-width: 190px;
+  pointer-events: none; z-index: 1; overflow: hidden;
+}
+.emoji-zone.left { left: 0; }
+.emoji-zone.right { right: 0; }
+.floating-emoji {
+  position: absolute; display: block; user-select: none; pointer-events: none;
+  will-change: transform; filter: drop-shadow(0 0 4px rgba(57, 255, 20, .35));
+}
+.left .emoji-1 { font-size: 70px; left: 8%; top: 10%; animation: bounceLeft1 6.5s ease-in-out infinite alternate; }
+.left .emoji-2 { font-size: 42px; left: 52%; top: 27%; animation: bounceLeft2 4.7s ease-in-out infinite alternate; }
+.left .emoji-3 { font-size: 92px; left: 12%; top: 47%; animation: bounceLeft3 7.2s ease-in-out infinite alternate; }
+.left .emoji-4 { font-size: 54px; left: 55%; top: 67%; animation: bounceLeft4 5.4s ease-in-out infinite alternate; }
+.left .emoji-5 { font-size: 32px; left: 20%; top: 84%; animation: bounceLeft5 3.9s ease-in-out infinite alternate; }
+.right .emoji-1 { font-size: 48px; right: 10%; top: 8%; animation: bounceRight1 5.2s ease-in-out infinite alternate; }
+.right .emoji-2 { font-size: 88px; right: 45%; top: 23%; animation: bounceRight2 7s ease-in-out infinite alternate; }
+.right .emoji-3 { font-size: 38px; right: 12%; top: 43%; animation: bounceRight3 4.2s ease-in-out infinite alternate; }
+.right .emoji-4 { font-size: 68px; right: 48%; top: 61%; animation: bounceRight4 6.1s ease-in-out infinite alternate; }
+.right .emoji-5 { font-size: 30px; right: 18%; top: 82%; animation: bounceRight5 3.7s ease-in-out infinite alternate; }
+
+@keyframes bounceLeft1 { 0% { transform: translate(0, 0) rotate(-12deg); } 100% { transform: translate(15px, 285px) rotate(-15deg); } }
+@keyframes bounceLeft2 { 0% { transform: translate(0, 0) rotate(10deg); } 100% { transform: translate(-20px, 205px) rotate(-10deg); } }
+@keyframes bounceLeft3 { 0% { transform: translate(0, 0) rotate(8deg); } 100% { transform: translate(5px, -235px) rotate(15deg); } }
+@keyframes bounceLeft4 { 0% { transform: translate(0, 0) rotate(-8deg); } 100% { transform: translate(-10px, 175px) rotate(10deg); } }
+@keyframes bounceLeft5 { 0% { transform: translate(0, 0); } 100% { transform: translate(-20px, -110px) rotate(-15deg); } }
+@keyframes bounceRight1 { 0% { transform: translate(0, 0) rotate(12deg); } 100% { transform: translate(-15px, 275px) rotate(12deg); } }
+@keyframes bounceRight2 { 0% { transform: translate(0, 0) rotate(-10deg); } 100% { transform: translate(20px, 210px) rotate(15deg); } }
+@keyframes bounceRight3 { 0% { transform: translate(0, 0) rotate(8deg); } 100% { transform: translate(10px, -225px) rotate(18deg); } }
+@keyframes bounceRight4 { 0% { transform: translate(0, 0) rotate(-12deg); } 100% { transform: translate(15px, 180px) rotate(10deg); } }
+@keyframes bounceRight5 { 0% { transform: translate(0, 0); } 100% { transform: translate(20px, -115px) rotate(15deg); } }
+
 @media(max-width:760px){
- .buy{
+ .buy {
     grid-template-columns:1fr;
     padding:10px
  }
 
- .btn{
+ .btn {
     min-height:auto;
     border-radius:22px;
     padding:20px 14px;
  }
 
- .hamb{
+ .hamb {
     width:50px;
     height:50px;
     font-size:29px
  }
 
- .menu{
+ .menu {
     top:58px
  }
 }
+
+@media (max-width: 900px) {  .emoji-zone { width: 8vw; min-width: 45px; opacity: .55; }  }
 </style>
 </head>
 
 <body>
+
+<div class="emoji-zone left" aria-hidden="true">
+  <span class="floating-emoji emoji-1">🍕</span> 
+  <span class="floating-emoji emoji-2">😃</span> 
+  <span class="floating-emoji emoji-3">💵</span> 
+  <span class="floating-emoji emoji-4">🪙</span> 
+  <span class="floating-emoji emoji-5">🙂</span>
+</div>
+<div class="emoji-zone right" aria-hidden="true">
+  <span class="floating-emoji emoji-1">🙂</span> 
+  <span class="floating-emoji emoji-2">🍕</span> 
+  <span class="floating-emoji emoji-3">🪙</span> 
+  <span class="floating-emoji emoji-4">😃</span> 
+  <span class="floating-emoji emoji-5">💵</span>
+</div>
 
 <header class="top-section">
   <div class="top-content">
@@ -284,7 +334,7 @@ body{overflow-x:hidden}
 
 <div class="page">
   <section class="buy">
-    <a class="btn green" href="https://august2024xx-cpu.github.io/ppal/">
+    <a class="btn green" href="https://august2024xx-cpu.github.io/anycryptopay2/">
       <span class="hand">👆</span>
       <span class="btn-text">
         PROFIT BUY PIZZA COIN<br>WITH VISA, MC OR PAYPAL
