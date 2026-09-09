@@ -37,7 +37,7 @@ body{overflow-x:hidden}
   padding: 10px 12px 10px;
 }
 
-.page{max-width:1200px;margin:auto;padding:10px 12px 45px}
+.page{max-width:1200px;margin:auto;padding:10px 12px 45px;position:relative;z-index:2}
 
 .hero{
  display:block;
@@ -112,7 +112,7 @@ body{overflow-x:hidden}
 /* BUY BUTTONS */
 .buy{
  display:grid;
- grid-template-columns:1fr 1fr;
+ grid-template-columns: repeat(3, 1fr);
  gap:22px;
  margin:20px auto 0;
  max-width:1120px;
@@ -137,11 +137,12 @@ body{overflow-x:hidden}
  justify-content:space-between;
  text-align:center;
  font-weight:1000;
- font-size:clamp(22px,3.8vw,52px);
+ font-size:clamp(18px, 2.2vw, 36px);
  line-height:1.05;
  text-transform:uppercase;
  transition:.12s;
- padding:25px 20px;
+ padding:25px 12px;
+ box-sizing: border-box;
 }
 
 .btn-text {
@@ -186,7 +187,7 @@ body{overflow-x:hidden}
 .btn-icon {
  position:static;
  display:block;
- width:clamp(90px, 22vw, 160px);
+ width:clamp(80px, 15vw, 140px);
  height:auto;
  max-width:100%;
  margin:10px auto 0;
@@ -237,19 +238,24 @@ body{overflow-x:hidden}
 /* FLOATING EMOJIS */
 .emoji-zone {
   position: fixed; top: 0; bottom: 0; width: 13vw; min-width: 75px; max-width: 190px;
-  pointer-events: none; z-index: 1; overflow: hidden;
+  pointer-events: none; z-index: 0; overflow: hidden;
 }
+
 .emoji-zone.left { left: 0; }
+
 .emoji-zone.right { right: 0; }
+
 .floating-emoji {
   position: absolute; display: block; user-select: none; pointer-events: none;
   will-change: transform; filter: drop-shadow(0 0 4px rgba(57, 255, 20, .35));
 }
+
 .left .emoji-1 { font-size: 70px; left: 8%; top: 10%; animation: bounceLeft1 6.5s ease-in-out infinite alternate; }
 .left .emoji-2 { font-size: 42px; left: 52%; top: 27%; animation: bounceLeft2 4.7s ease-in-out infinite alternate; }
 .left .emoji-3 { font-size: 92px; left: 12%; top: 47%; animation: bounceLeft3 7.2s ease-in-out infinite alternate; }
 .left .emoji-4 { font-size: 54px; left: 55%; top: 67%; animation: bounceLeft4 5.4s ease-in-out infinite alternate; }
 .left .emoji-5 { font-size: 32px; left: 20%; top: 84%; animation: bounceLeft5 3.9s ease-in-out infinite alternate; }
+
 .right .emoji-1 { font-size: 48px; right: 10%; top: 8%; animation: bounceRight1 5.2s ease-in-out infinite alternate; }
 .right .emoji-2 { font-size: 88px; right: 45%; top: 23%; animation: bounceRight2 7s ease-in-out infinite alternate; }
 .right .emoji-3 { font-size: 38px; right: 12%; top: 43%; animation: bounceRight3 4.2s ease-in-out infinite alternate; }
@@ -261,39 +267,129 @@ body{overflow-x:hidden}
 @keyframes bounceLeft3 { 0% { transform: translate(0, 0) rotate(8deg); } 100% { transform: translate(5px, -235px) rotate(15deg); } }
 @keyframes bounceLeft4 { 0% { transform: translate(0, 0) rotate(-8deg); } 100% { transform: translate(-10px, 175px) rotate(10deg); } }
 @keyframes bounceLeft5 { 0% { transform: translate(0, 0); } 100% { transform: translate(-20px, -110px) rotate(-15deg); } }
+
 @keyframes bounceRight1 { 0% { transform: translate(0, 0) rotate(12deg); } 100% { transform: translate(-15px, 275px) rotate(12deg); } }
 @keyframes bounceRight2 { 0% { transform: translate(0, 0) rotate(-10deg); } 100% { transform: translate(20px, 210px) rotate(15deg); } }
 @keyframes bounceRight3 { 0% { transform: translate(0, 0) rotate(8deg); } 100% { transform: translate(10px, -225px) rotate(18deg); } }
 @keyframes bounceRight4 { 0% { transform: translate(0, 0) rotate(-12deg); } 100% { transform: translate(15px, 180px) rotate(10deg); } }
 @keyframes bounceRight5 { 0% { transform: translate(0, 0); } 100% { transform: translate(20px, -115px) rotate(15deg); } }
 
+/* BUTTON 3 SPECIFIC ANIMATED CHART & COUNTER STYLES */
+.btn-chart-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 240px;
+  background: #000500;
+  border: 2px dashed var(--g);
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow: inset 0 0 12px rgba(57, 255, 20, 0.9);
+  margin: 10px auto 0;
+  box-sizing: border-box;
+}
+
+.btn-chart-wrapper svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.grid-line {
+  stroke: var(--g);
+  stroke-dasharray: 3 3;
+  stroke-width: 1;
+  opacity: 0.25;
+}
+
+.axis {
+  stroke: var(--g);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 3px var(--g));
+}
+
+.axis-text {
+  fill: var(--g);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 11px;
+  text-shadow: 0 0 4px var(--g);
+}
+
+.chart-line {
+  fill: none;
+  stroke: var(--g);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px var(--g));
+}
+
+.pizza-tracker {
+  font-size: 20px;
+  offset-path: path("M 55 250 Q 140 230 180 150 T 285 35");
+  animation: movePizza 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes movePizza {
+  0% { offset-distance: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+.btn-profit-display {
+  width: 100%;
+  max-width: 240px;
+  background: #002000;
+  border: 2px solid var(--g);
+  border-radius: 10px;
+  padding: 6px 4px;
+  margin-top: 8px;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.9);
+  box-sizing: border-box;
+}
+
+.btn-profit-label {
+  font-size: clamp(10px, 1.2vw, 12px);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: var(--g);
+  text-shadow: 0 0 5px var(--g);
+  margin-bottom: 2px;
+}
+
+.btn-counter-box {
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 1000;
+  color: #fff;
+  text-shadow: 0 0 8px #fff, 0 0 18px var(--g), 0 0 32px var(--g);
+}
+
 @media(max-width:760px){
  .buy {
     grid-template-columns:1fr;
     padding:10px
  }
-
  .btn {
     min-height:auto;
     border-radius:22px;
     padding:20px 14px;
  }
-
  .hamb {
     width:50px;
     height:50px;
     font-size:29px
  }
-
  .menu {
     top:58px
  }
 }
 
 @media (max-width: 900px) {  .emoji-zone { width: 8vw; min-width: 45px; opacity: .55; }  }
+
 </style>
 </head>
-
 <body>
 
 <div class="emoji-zone left" aria-hidden="true">
@@ -303,6 +399,7 @@ body{overflow-x:hidden}
   <span class="floating-emoji emoji-4">🪙</span> 
   <span class="floating-emoji emoji-5">🙂</span>
 </div>
+
 <div class="emoji-zone right" aria-hidden="true">
   <span class="floating-emoji emoji-1">🙂</span> 
   <span class="floating-emoji emoji-2">🍕</span> 
@@ -325,7 +422,6 @@ body{overflow-x:hidden}
         <a href="https://www.pizza-coin.org/">Option 7</a>
       </nav>
     </div>
-
     <div class="hero">
       <img class="hero-img" src="pzzctitle.png" alt="Pizza Coin Title">
     </div>
@@ -350,6 +446,45 @@ body{overflow-x:hidden}
         <span class="sub">CLICK HERE TO BUY</span>
       </span>
       <img src="crypto2.png" alt="Crypto Icon" class="btn-icon">
+    </a>
+
+    <!-- SELF-CONTAINED 3RD BUTTON WITH NEON GREEN BORDER AND ANIMATED PROFIT DEMO -->
+    <a class="btn green" href="https://www.pizza-coin.org/">
+      <span class="hand">👆</span>
+      <span class="btn-text">
+        PROFIT WITH<br>PIZZA COIN
+        <span class="sub">SEE PROFIT GROW</span>
+      </span>
+
+      <div class="btn-chart-wrapper">
+        <svg viewBox="0 0 300 280">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#39ff14" filter="drop-shadow(0 0 2px #39ff14)" />
+            </marker>
+          </defs>
+          <line x1="55" y1="35" x2="290" y2="35" class="grid-line" />
+          <line x1="55" y1="105" x2="290" y2="105" class="grid-line" />
+          <line x1="55" y1="175" x2="290" y2="175" class="grid-line" />
+          <line x1="55" y1="245" x2="290" y2="245" class="grid-line" />
+          <text x="5" y="38" class="axis-text">$4,000</text>
+          <text x="5" y="108" class="axis-text">$3,000</text>
+          <text x="5" y="178" class="axis-text">$1,500</text>
+          <text x="5" y="248" class="axis-text">$1</text>
+          <polyline points="55,15 55,255 295,255" class="axis" marker-end="url(#arrow)" />
+          <path d="M 55 250 Q 140 230 180 150 T 285 35" class="chart-line" marker-end="url(#arrow)" />
+          <g class="pizza-tracker">
+            <text x="-13" y="8">🍕</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="btn-profit-display">
+        <div class="btn-profit-label">🍕 YOUR PROFIT BALANCE 🍕</div>
+        <div class="btn-counter-box">
+          $<span id="profitCounter">1</span>
+        </div>
+      </div>
     </a>
   </section>
 
@@ -383,7 +518,33 @@ document.onclick = function(e){
     h.setAttribute("aria-expanded", "false");
   }
 };
-</script>
 
+/* PROFIT COUNTER SCRIPT */
+const counterEl = document.getElementById('profitCounter');
+const startVal = 1;
+const endVal = 4000;
+const duration = 4000;
+let startTime = null;
+
+function updateCounter(timestamp) {
+  if (!startTime) startTime = timestamp;
+  const progress = Math.min((timestamp - startTime) / duration, 1);
+  const currentVal = Math.floor(startVal + Math.pow(progress, 2.5) * (endVal - startVal));
+  
+  if (counterEl) {
+    counterEl.textContent = currentVal.toLocaleString();
+  }
+  
+  if (progress < 1) {
+    requestAnimationFrame(updateCounter);
+  } else {
+    setTimeout(() => {
+      startTime = null;
+      requestAnimationFrame(updateCounter);
+    }, 50);
+  }
+}
+requestAnimationFrame(updateCounter);
+</script>
 </body>
 </html>
