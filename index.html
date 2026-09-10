@@ -274,6 +274,67 @@ body{overflow-x:hidden}
 @keyframes bounceRight4 { 0% { transform: translate(0, 0) rotate(-12deg); } 100% { transform: translate(15px, 180px) rotate(10deg); } }
 @keyframes bounceRight5 { 0% { transform: translate(0, 0); } 100% { transform: translate(20px, -115px) rotate(15deg); } }
 
+/* 3RD BUTTON CAROUSEL FRAME STYLES */
+.btn-slider-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 240px;
+  height: 150px;
+  background: #000;
+  border: 2px solid var(--g);
+  border-radius: 12px;
+  margin: 10px auto 0;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+  user-select: none;
+}
+
+.btn-slider-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.btn-slider-wrapper img.active {
+  opacity: 1;
+}
+
+/* CAROUSEL ARROWS */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 20, 0, 0.8);
+  color: var(--g);
+  border: 1px solid var(--g);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 0 6px var(--g);
+  transition: 0.1s;
+}
+
+.slider-arrow:hover {
+  background: var(--g);
+  color: #000;
+}
+
+.slider-arrow.prev { left: 5px; }
+.slider-arrow.next { right: 5px; }
+
 /* ANDROID OPTIMIZED PROFIT DEMO GRAPHIC & COUNTER */
 .btn-chart-wrapper {
   position: relative;
@@ -459,7 +520,7 @@ body{overflow-x:hidden}
       <img src="crypto2.png" alt="Crypto Icon" class="btn-icon">
     </a>
 
-    <!-- SELF-CONTAINED 3RD BUTTON WITH NEON GREEN BORDER AND ANIMATED PROFIT DEMO -->
+    <!-- SELF-CONTAINED 3RD BUTTON WITH CAROUSEL, NEON GREEN BORDER AND ANIMATED PROFIT DEMO -->
     <a class="btn green" href="https://www.pizza-coin.org/">
       <span class="hand">👆</span>
       <span class="btn-text">
@@ -467,6 +528,18 @@ body{overflow-x:hidden}
         <span class="sub">SEE PROFIT GROW</span>
       </span>
 
+      <!-- SWIPEABLE PICTURE CAROUSEL -->
+      <div class="btn-slider-wrapper" id="btnSlider">
+        <div class="slider-arrow prev" id="slidePrev" onclick="event.preventDefault(); event.stopPropagation(); moveSlide(-1);">&#10094;</div>
+        <div class="slider-arrow next" id="slideNext" onclick="event.preventDefault(); event.stopPropagation(); moveSlide(1);">&#10095;</div>
+        
+        <img src="pic1.png" class="active" alt="Picture 1">
+        <img src="pic2.png" alt="Picture 2">
+        <img src="pic3.png" alt="Picture 3">
+        <img src="pic4.png" alt="Picture 4">
+      </div>
+
+      <!-- ANIMATED CHART DEMO -->
       <div class="btn-chart-wrapper">
         <svg viewBox="0 0 300 280">
           <defs>
@@ -490,6 +563,7 @@ body{overflow-x:hidden}
         </svg>
       </div>
 
+      <!-- PROFIT COUNTER -->
       <div class="btn-profit-display">
         <div class="btn-profit-label">🍕 YOUR PROFIT BALANCE 🍕</div>
         <div class="btn-counter-box">
@@ -556,6 +630,59 @@ function updateCounter(timestamp) {
   }
 }
 requestAnimationFrame(updateCounter);
+
+/* 3RD BUTTON CAROUSEL LOGIC */
+let currentSlide = 0;
+const slides = document.querySelectorAll('#btnSlider img');
+const totalSlides = slides.length;
+let slideInterval;
+
+function showSlide(index) {
+  slides.forEach((img, i) => {
+    img.classList.toggle('active', i === index);
+  });
+}
+
+function moveSlide(direction) {
+  currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+  showSlide(currentSlide);
+  resetTimer();
+}
+
+function startAutoSlide() {
+  slideInterval = setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+  }, 10000); // Swaps every 10 seconds
+}
+
+function resetTimer() {
+  clearInterval(slideInterval);
+  startAutoSlide();
+}
+
+// SWIPE GESTURES FOR MOBILE/ANDROID
+const sliderEl = document.getElementById('btnSlider');
+let touchStartX = 0;
+let touchEndX = 0;
+
+if (sliderEl) {
+  sliderEl.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  sliderEl.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchEndX < touchStartX - 30) {
+      moveSlide(1);  // Swipe Left -> Next
+    } else if (touchEndX > touchStartX + 30) {
+      moveSlide(-1); // Swipe Right -> Previous
+    }
+  }, { passive: true });
+}
+
+// START AUTOMATIC 10-SECOND TIMER
+startAutoSlide();
 </script>
 </body>
 </html>
