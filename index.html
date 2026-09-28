@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/x-icon" href="favicon1.ico">
 <title></title>
 <style>
 :root{--g:#39ff14;--b:#00aaff}
@@ -197,6 +198,16 @@ body{overflow-x:hidden}
   max-width:100%;
   margin:12px auto 0;
   filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* CURRENT + TWO ADDITIONAL GIF SPACES */
+.click-gif {
+  display:block;
+  width:clamp(180px, 32vw, 300px);
+  height:auto;
+  max-width:100%;
+  margin:12px auto;
+  filter:drop-shadow(0 0 8px currentColor);
 }
 
 @keyframes flicker{
@@ -519,6 +530,13 @@ body{overflow-x:hidden}
         PROFIT BUY PIZZA COIN<br>WITH VISA, MC OR PAYPAL
         <span class="sub">CLICK HERE TO BUY</span>
       </span>
+
+      <!-- CURRENT GIF -->
+      <img src="click1.gif" alt="" class="click-gif">
+
+      <!-- NEW GIF SPACE -->
+      <img src="click3.gif" alt="" class="click-gif">
+
       <img src="ppal2.png" alt="PayPal / Card Icon" class="btn-icon">
     </a>
 
@@ -528,6 +546,13 @@ body{overflow-x:hidden}
         PROFIT BUY PIZZA COIN<br>WITH ANY CRYPTO HERE
         <span class="sub">CLICK HERE TO BUY</span>
       </span>
+
+      <!-- CURRENT GIF -->
+      <img src="click2.gif" alt="" class="click-gif">
+
+      <!-- NEW GIF SPACE -->
+      <img src="click4.gif" alt="" class="click-gif">
+
       <img src="crypto2.png" alt="Crypto Icon" class="btn-icon">
     </a>
 
@@ -640,6 +665,7 @@ function updateCounter(timestamp) {
     }, 50);
   }
 }
+
 requestAnimationFrame(updateCounter);
 
 /* 3RD BUTTON CAROUSEL LOGIC */
