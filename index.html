@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/x-icon" href="favicon1.ico">
 <title></title>
+
 <style>
 :root{--g:#39ff14;--b:#00aaff}
 *{box-sizing:border-box}
@@ -40,7 +42,7 @@ body{overflow-x:hidden}
 
 .page{max-width:1200px;margin:auto;padding:10px 12px 45px;position:relative;z-index:2}
 
-/* 4. MADE TOP PICTURE THINNER TO EXPOSE EMOJIS */
+/* TOP PICTURE */
 .hero{
   display:block;
   width:min(100%,880px);
@@ -92,9 +94,7 @@ body{overflow-x:hidden}
   box-shadow:0 0 10px #fff,0 0 30px var(--g)
 }
 
-.menu.open{
-  display:block
-}
+.menu.open{display:block}
 
 .menu a{
   display:block;
@@ -144,10 +144,10 @@ body{overflow-x:hidden}
   text-transform:uppercase;
   transition:.12s;
   padding:25px 12px;
-  box-sizing: border-box;
+  box-sizing:border-box;
 }
 
-.btn-text {
+.btn-text{
   display:block;
   width:100%;
   margin-bottom:15px;
@@ -158,19 +158,42 @@ body{overflow-x:hidden}
   filter:brightness(1.3)
 }
 
-/* ABSOLUTE ZERO-BLUR CRISP NEON GREEN */
+/* THICK FLASHING FLUORESCENT GREEN BORDER ON ALL 3 BUTTONS */
+.btn{
+  animation:neonGreenBorderFlash .8s infinite alternate;
+}
+
+@keyframes neonGreenBorderFlash{
+  0%{
+    border-color:#39ff14;
+    box-shadow:
+      0 0 8px #39ff14,
+      0 0 18px #39ff14,
+      0 0 35px #39ff14;
+  }
+  100%{
+    border-color:#ffffff;
+    box-shadow:
+      0 0 12px #ffffff,
+      0 0 28px #39ff14,
+      0 0 55px #39ff14,
+      0 0 75px #39ff14;
+  }
+}
+
+/* CRISP NEON GREEN */
 .green{
-  color: #39ff14;
-  -webkit-text-stroke: 1.5px #000;
-  text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+  color:#39ff14;
+  -webkit-text-stroke:1.5px #000;
+  text-shadow:2px 2px 0px #000,-2px -2px 0px #000,2px -2px 0px #000,-2px 2px 0px #000;
   box-shadow:0 0 8px #fff,0 0 24px var(--g),0 0 50px #39ff1499
 }
 
-/* ABSOLUTE ZERO-BLUR CRISP NEON BLUE */
+/* CRISP NEON BLUE TEXT */
 .blue{
-  color: #19c7ff;
-  -webkit-text-stroke: 1.5px #000;
-  text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+  color:#19c7ff;
+  -webkit-text-stroke:1.5px #000;
+  text-shadow:2px 2px 0px #000,-2px -2px 0px #000,2px -2px 0px #000,-2px 2px 0px #000;
   box-shadow:0 0 8px #fff,0 0 24px var(--b),0 0 50px #00aaff99
 }
 
@@ -189,21 +212,21 @@ body{overflow-x:hidden}
       drop-shadow(0 0 20px currentColor)
 }
 
-/* 3. MADE PICTURES INSIDE FIRST 2 BUTTONS LARGER */
-.btn-icon {
+/* BUTTON ICONS */
+.btn-icon{
   position:static;
   display:block;
-  width:clamp(110px, 20vw, 175px);
+  width:clamp(110px,20vw,175px);
   height:auto;
   max-width:100%;
   margin:12px auto 0;
-  filter: drop-shadow(0 0 8px currentColor);
+  filter:drop-shadow(0 0 8px currentColor);
 }
 
-/* CURRENT + TWO ADDITIONAL GIF SPACES */
-.click-gif {
+/* GIFS */
+.click-gif{
   display:block;
-  width:clamp(180px, 32vw, 300px);
+  width:clamp(180px,32vw,300px);
   height:auto;
   max-width:100%;
   margin:12px auto;
@@ -229,8 +252,8 @@ body{overflow-x:hidden}
   font-size:.4em;
   letter-spacing:2px;
   color:#ffffff;
-  -webkit-text-stroke: 0px;
-  text-shadow: 1.5px 1.5px 0px #000, -1.5px -1.5px 0px #000;
+  -webkit-text-stroke:0px;
+  text-shadow:1.5px 1.5px 0px #000,-1.5px -1.5px 0px #000;
 }
 
 .notice{
@@ -253,259 +276,279 @@ body{overflow-x:hidden}
   text-shadow:0 0 10px var(--g)
 }
 
-/* FLOATING EMOJIS (BEHIND EVERYTHING) */
-.emoji-zone {
-  position: fixed; top: 0; bottom: 0; width: 13vw; min-width: 75px; max-width: 190px;
-  pointer-events: none; z-index: 0; overflow: hidden;
+/* FLOATING EMOJIS */
+.emoji-zone{
+  position:fixed;
+  top:0;
+  bottom:0;
+  width:13vw;
+  min-width:75px;
+  max-width:190px;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
 }
 
-.emoji-zone.left { left: 0; }
-.emoji-zone.right { right: 0; }
+.emoji-zone.left{left:0}
+.emoji-zone.right{right:0}
 
-.floating-emoji {
-  position: absolute; display: block; user-select: none; pointer-events: none;
-  will-change: transform; filter: drop-shadow(0 0 4px rgba(57, 255, 20, .35));
+.floating-emoji{
+  position:absolute;
+  display:block;
+  user-select:none;
+  pointer-events:none;
+  will-change:transform;
+  filter:drop-shadow(0 0 4px rgba(57,255,20,.35));
 }
 
-.left .emoji-1 { font-size: 70px; left: 8%; top: 10%; animation: bounceLeft1 6.5s ease-in-out infinite alternate; }
-.left .emoji-2 { font-size: 42px; left: 52%; top: 27%; animation: bounceLeft2 4.7s ease-in-out infinite alternate; }
-.left .emoji-3 { font-size: 92px; left: 12%; top: 47%; animation: bounceLeft3 7.2s ease-in-out infinite alternate; }
-.left .emoji-4 { font-size: 54px; left: 55%; top: 67%; animation: bounceLeft4 5.4s ease-in-out infinite alternate; }
-.left .emoji-5 { font-size: 32px; left: 20%; top: 84%; animation: bounceLeft5 3.9s ease-in-out infinite alternate; }
+.left .emoji-1{font-size:70px;left:8%;top:10%;animation:bounceLeft1 6.5s ease-in-out infinite alternate}
+.left .emoji-2{font-size:42px;left:52%;top:27%;animation:bounceLeft2 4.7s ease-in-out infinite alternate}
+.left .emoji-3{font-size:92px;left:12%;top:47%;animation:bounceLeft3 7.2s ease-in-out infinite alternate}
+.left .emoji-4{font-size:54px;left:55%;top:67%;animation:bounceLeft4 5.4s ease-in-out infinite alternate}
+.left .emoji-5{font-size:32px;left:20%;top:84%;animation:bounceLeft5 3.9s ease-in-out infinite alternate}
 
-.right .emoji-1 { font-size: 48px; right: 10%; top: 8%; animation: bounceRight1 5.2s ease-in-out infinite alternate; }
-.right .emoji-2 { font-size: 88px; right: 45%; top: 23%; animation: bounceRight2 7s ease-in-out infinite alternate; }
-.right .emoji-3 { font-size: 38px; right: 12%; top: 43%; animation: bounceRight3 4.2s ease-in-out infinite alternate; }
-.right .emoji-4 { font-size: 68px; right: 48%; top: 61%; animation: bounceRight4 6.1s ease-in-out infinite alternate; }
-.right .emoji-5 { font-size: 30px; right: 18%; top: 82%; animation: bounceRight5 3.7s ease-in-out infinite alternate; }
+.right .emoji-1{font-size:48px;right:10%;top:8%;animation:bounceRight1 5.2s ease-in-out infinite alternate}
+.right .emoji-2{font-size:88px;right:45%;top:23%;animation:bounceRight2 7s ease-in-out infinite alternate}
+.right .emoji-3{font-size:38px;right:12%;top:43%;animation:bounceRight3 4.2s ease-in-out infinite alternate}
+.right .emoji-4{font-size:68px;right:48%;top:61%;animation:bounceRight4 6.1s ease-in-out infinite alternate}
+.right .emoji-5{font-size:30px;right:18%;top:82%;animation:bounceRight5 3.7s ease-in-out infinite alternate}
 
-@keyframes bounceLeft1 { 0% { transform: translate(0, 0) rotate(-12deg); } 100% { transform: translate(15px, 285px) rotate(-15deg); } }
-@keyframes bounceLeft2 { 0% { transform: translate(0, 0) rotate(10deg); } 100% { transform: translate(-20px, 205px) rotate(-10deg); } }
-@keyframes bounceLeft3 { 0% { transform: translate(0, 0) rotate(8deg); } 100% { transform: translate(5px, -235px) rotate(15deg); } }
-@keyframes bounceLeft4 { 0% { transform: translate(0, 0) rotate(-8deg); } 100% { transform: translate(-10px, 175px) rotate(10deg); } }
-@keyframes bounceLeft5 { 0% { transform: translate(0, 0); } 100% { transform: translate(-20px, -110px) rotate(-15deg); } }
+@keyframes bounceLeft1{0%{transform:translate(0,0) rotate(-12deg)}100%{transform:translate(15px,285px) rotate(-15deg)}}
+@keyframes bounceLeft2{0%{transform:translate(0,0) rotate(10deg)}100%{transform:translate(-20px,205px) rotate(-10deg)}}
+@keyframes bounceLeft3{0%{transform:translate(0,0) rotate(8deg)}100%{transform:translate(5px,-235px) rotate(15deg)}}
+@keyframes bounceLeft4{0%{transform:translate(0,0) rotate(-8deg)}100%{transform:translate(-10px,175px) rotate(10deg)}}
+@keyframes bounceLeft5{0%{transform:translate(0,0)}100%{transform:translate(-20px,-110px) rotate(-15deg)}}
 
-@keyframes bounceRight1 { 0% { transform: translate(0, 0) rotate(12deg); } 100% { transform: translate(-15px, 275px) rotate(12deg); } }
-@keyframes bounceRight2 { 0% { transform: translate(0, 0) rotate(-10deg); } 100% { transform: translate(20px, 210px) rotate(15deg); } }
-@keyframes bounceRight3 { 0% { transform: translate(0, 0) rotate(8deg); } 100% { transform: translate(10px, -225px) rotate(18deg); } }
-@keyframes bounceRight4 { 0% { transform: translate(0, 0) rotate(-12deg); } 100% { transform: translate(15px, 180px) rotate(10deg); } }
-@keyframes bounceRight5 { 0% { transform: translate(0, 0); } 100% { transform: translate(20px, -115px) rotate(15deg); } }
+@keyframes bounceRight1{0%{transform:translate(0,0) rotate(12deg)}100%{transform:translate(-15px,275px) rotate(12deg)}}
+@keyframes bounceRight2{0%{transform:translate(0,0) rotate(-10deg)}100%{transform:translate(20px,210px) rotate(15deg)}}
+@keyframes bounceRight3{0%{transform:translate(0,0) rotate(8deg)}100%{transform:translate(10px,-225px) rotate(18deg)}}
+@keyframes bounceRight4{0%{transform:translate(0,0) rotate(-12deg)}100%{transform:translate(15px,180px) rotate(10deg)}}
+@keyframes bounceRight5{0%{transform:translate(0,0)}100%{transform:translate(20px,-115px) rotate(15deg)}}
 
-/* 3RD BUTTON CAROUSEL FRAME STYLES */
-.btn-slider-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 240px;
-  height: 150px;
-  background: #000;
-  border: 2px solid var(--g);
-  border-radius: 12px;
-  margin: 10px auto 0;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
-  user-select: none;
+/* PICTURE CAROUSEL */
+.btn-slider-wrapper{
+  position:relative;
+  width:100%;
+  max-width:240px;
+  height:150px;
+  background:#000;
+  border:2px solid var(--g);
+  border-radius:12px;
+  margin:10px auto 0;
+  overflow:hidden;
+  box-shadow:0 0 10px rgba(57,255,20,.5);
+  user-select:none;
 }
 
-.btn-slider-wrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  pointer-events: none;
-  z-index: 1;
+.btn-slider-wrapper img{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  opacity:0;
+  transition:opacity .5s ease-in-out;
+  pointer-events:none;
+  z-index:1;
 }
 
-.btn-slider-wrapper img.active {
-  opacity: 1;
-  z-index: 2;
+.btn-slider-wrapper img.active{
+  opacity:1;
+  z-index:2;
 }
 
 /* CAROUSEL ARROWS */
-.slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 20, 0, 0.8);
-  color: var(--g);
-  border: 1px solid var(--g);
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  font-size: 14px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 0 6px var(--g);
-  transition: 0.1s;
+.slider-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,20,0,.8);
+  color:var(--g);
+  border:1px solid var(--g);
+  border-radius:50%;
+  width:28px;
+  height:28px;
+  font-size:14px;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:10;
+  box-shadow:0 0 6px var(--g);
+  transition:.1s;
 }
 
-.slider-arrow:hover {
-  background: var(--g);
-  color: #000;
+.slider-arrow:hover{
+  background:var(--g);
+  color:#000;
 }
 
-.slider-arrow.prev { left: 5px; }
-.slider-arrow.next { right: 5px; }
+.slider-arrow.prev{left:5px}
+.slider-arrow.next{right:5px}
 
-/* 1. ANDROID OPTIMIZED PROFIT DEMO GRAPHIC & COUNTER (MADE LARGER) */
-.btn-chart-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 270px;
-  background: #000500;
-  border: 2px dashed var(--g);
-  border-radius: 14px;
-  padding: 8px;
-  box-shadow: inset 0 0 12px rgba(57, 255, 20, 0.9);
-  margin: 10px auto 0;
-  box-sizing: border-box;
+/* ANIMATED PIZZA CHART — USED IN ALL 3 BUTTONS */
+.btn-chart-wrapper{
+  position:relative;
+  width:100%;
+  max-width:270px;
+  background:#000500;
+  border:2px dashed var(--g);
+  border-radius:14px;
+  padding:8px;
+  box-shadow:inset 0 0 12px rgba(57,255,20,.9);
+  margin:10px auto 0;
+  box-sizing:border-box;
 }
 
-.btn-chart-wrapper svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  overflow: visible;
+.btn-chart-wrapper svg{
+  width:100%;
+  height:auto;
+  display:block;
+  overflow:visible;
 }
 
-.grid-line {
-  stroke: var(--g);
-  stroke-dasharray: 3 3;
-  stroke-width: 1;
-  opacity: 0.25;
+.grid-line{
+  stroke:var(--g);
+  stroke-dasharray:3 3;
+  stroke-width:1;
+  opacity:.25;
 }
 
-.axis {
-  stroke: var(--g);
-  stroke-width: 3;
-  filter: drop-shadow(0 0 3px var(--g));
+.axis{
+  stroke:var(--g);
+  stroke-width:3;
+  filter:drop-shadow(0 0 3px var(--g));
 }
 
-.axis-text {
-  fill: #39ff14;
-  font-family: 'Courier New', monospace;
-  font-weight: bold;
-  font-size: 11px;
-  text-shadow: 1px 1px 0px #000;
+.axis-text{
+  fill:#39ff14;
+  font-family:'Courier New',monospace;
+  font-weight:bold;
+  font-size:11px;
+  text-shadow:1px 1px 0px #000;
 }
 
-.chart-line {
-  fill: none;
-  stroke: var(--g);
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 6px var(--g));
+.chart-line{
+  fill:none;
+  stroke:var(--g);
+  stroke-width:5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:drop-shadow(0 0 6px var(--g));
 }
 
-/* CROSS-BROWSER ANDROID MOTION PATH */
-.pizza-tracker {
-  font-size: 20px;
-  -webkit-offset-path: path("M 55 250 Q 140 230 180 150 T 285 35");
-  offset-path: path("M 55 250 Q 140 230 180 150 T 285 35");
-  -webkit-animation: movePizza 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  animation: movePizza 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+/* MOVING PIZZA */
+.pizza-tracker{
+  font-size:60px;
+  -webkit-offset-path:path("M 55 250 Q 140 230 180 150 T 285 35");
+  offset-path:path("M 55 250 Q 140 230 180 150 T 285 35");
+  -webkit-animation:movePizza 4s cubic-bezier(.4,0,.2,1) infinite;
+  animation:movePizza 4s cubic-bezier(.4,0,.2,1) infinite;
 }
 
-@-webkit-keyframes movePizza {
-  0% { -webkit-offset-distance: 0%; offset-distance: 0%; opacity: 0; }
-  10% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { -webkit-offset-distance: 100%; offset-distance: 100%; opacity: 0; }
+@-webkit-keyframes movePizza{
+  0%{-webkit-offset-distance:0%;offset-distance:0%;opacity:0}
+  10%{opacity:1}
+  85%{opacity:1}
+  100%{-webkit-offset-distance:100%;offset-distance:100%;opacity:0}
 }
 
-@keyframes movePizza {
-  0% { -webkit-offset-distance: 0%; offset-distance: 0%; opacity: 0; }
-  10% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { -webkit-offset-distance: 100%; offset-distance: 100%; opacity: 0; }
+@keyframes movePizza{
+  0%{-webkit-offset-distance:0%;offset-distance:0%;opacity:0}
+  10%{opacity:1}
+  85%{opacity:1}
+  100%{-webkit-offset-distance:100%;offset-distance:100%;opacity:0}
 }
 
-.btn-profit-display {
-  width: 100%;
-  max-width: 270px;
-  background: #002000;
-  border: 2px solid var(--g);
-  border-radius: 10px;
-  padding: 8px 4px;
-  margin-top: 8px;
-  box-shadow: 0 0 10px rgba(57, 255, 20, 0.9);
-  box-sizing: border-box;
+/* PROFIT BALANCE DISPLAY — USED IN ALL 3 BUTTONS */
+.btn-profit-display{
+  width:100%;
+  max-width:270px;
+  background:#002000;
+  border:2px solid var(--g);
+  border-radius:10px;
+  padding:8px 4px;
+  margin-top:8px;
+  box-shadow:0 0 10px rgba(57,255,20,.9);
+  box-sizing:border-box;
 }
 
-/* 2. "YOUR PROFIT BALANCE" LARGER SOLID NEON GREEN FONT */
-.btn-profit-label {
-  font-size: clamp(13px, 1.6vw, 15px);
-  font-weight: 1000;
-  letter-spacing: 1px;
-  color: #39ff14;
-  -webkit-text-stroke: 0.5px #000;
-  text-shadow: 0 0 8px #39ff14;
-  margin-bottom: 3px;
+.btn-profit-label{
+  font-size:clamp(13px,1.6vw,15px);
+  font-weight:1000;
+  letter-spacing:1px;
+  color:#39ff14;
+  -webkit-text-stroke:.5px #000;
+  text-shadow:0 0 8px #39ff14;
+  margin-bottom:3px;
 }
 
-.btn-counter-box {
-  font-size: clamp(24px, 3.2vw, 36px);
-  font-weight: 1000;
-  color: #39ff14;
-  -webkit-text-stroke: 1px #000;
-  text-shadow: 2px 2px 0px #000, -1px -1px 0px #000;
+.btn-counter-box{
+  font-size:clamp(24px,3.2vw,36px);
+  font-weight:1000;
+  color:#39ff14;
+  -webkit-text-stroke:1px #000;
+  text-shadow:2px 2px 0px #000,-1px -1px 0px #000;
 }
 
 @media(max-width:760px){
- .buy {
+  .buy{
     grid-template-columns:1fr;
     padding:10px
- }
- .btn {
+  }
+
+  .btn{
     min-height:auto;
     border-radius:22px;
     padding:20px 14px;
- }
- .hamb {
+  }
+
+  .hamb{
     width:50px;
     height:50px;
     font-size:29px
- }
- .menu {
-    top:58px
- }
+  }
+
+  .menu{top:58px}
 }
 
-@media (max-width: 900px) {  .emoji-zone { width: 8vw; min-width: 45px; opacity: .55; }  }
-
+@media(max-width:900px){
+  .emoji-zone{
+    width:8vw;
+    min-width:45px;
+    opacity:.55;
+  }
+}
 </style>
 </head>
+
 <body>
 
-<!-- EMOJI ZONES LAYERED STRICTLY BEHIND (z-index: 0) -->
+<!-- FLOATING EMOJIS -->
 <div class="emoji-zone left" aria-hidden="true">
-  <span class="floating-emoji emoji-1">🍕</span> 
-  <span class="floating-emoji emoji-2">😃</span> 
-  <span class="floating-emoji emoji-3">💵</span> 
-  <span class="floating-emoji emoji-4">🪙</span> 
+  <span class="floating-emoji emoji-1">🍕</span>
+  <span class="floating-emoji emoji-2">😃</span>
+  <span class="floating-emoji emoji-3">💵</span>
+  <span class="floating-emoji emoji-4">🪙</span>
   <span class="floating-emoji emoji-5">🙂</span>
 </div>
 
 <div class="emoji-zone right" aria-hidden="true">
-  <span class="floating-emoji emoji-1">🙂</span> 
-  <span class="floating-emoji emoji-2">🍕</span> 
-  <span class="floating-emoji emoji-3">🪙</span> 
-  <span class="floating-emoji emoji-4">😃</span> 
+  <span class="floating-emoji emoji-1">🙂</span>
+  <span class="floating-emoji emoji-2">🍕</span>
+  <span class="floating-emoji emoji-3">🪙</span>
+  <span class="floating-emoji emoji-4">😃</span>
   <span class="floating-emoji emoji-5">💵</span>
 </div>
 
 <header class="top-section">
   <div class="top-content">
+
     <div class="menu-wrap">
       <button class="hamb" id="hamb" aria-label="Open menu" aria-expanded="false">☰</button>
+
       <nav class="menu" id="menu">
         <a href="https://www.pizza-coin.org/">Option 1</a>
         <a href="https://www.pizza-coin.org/">Option 2</a>
@@ -516,121 +559,226 @@ body{overflow-x:hidden}
         <a href="https://www.pizza-coin.org/">Option 7</a>
       </nav>
     </div>
+
     <div class="hero">
       <img class="hero-img" src="pzzctitle.png" alt="Pizza Coin Title">
     </div>
+
   </div>
 </header>
 
 <div class="page">
-  <section class="buy">
-    <a class="btn green" href="https://august2024xx-cpu.github.io/ppal/">
-      <span class="hand">👆</span>
-      <span class="btn-text">
-        PROFIT BUY PIZZA COIN<br>WITH VISA, MC OR PAYPAL
-        <span class="sub">CLICK HERE TO BUY</span>
-      </span>
 
-      <!-- CURRENT GIF -->
-      <img src="click1.gif" alt="" class="click-gif">
+<section class="buy">
 
-      <!-- NEW GIF SPACE -->
-      <img src="click3.gif" alt="" class="click-gif">
+  <!-- BUTTON 1: VISA, MASTERCARD AND PAYPAL -->
+  <a class="btn green" href="https://august2024xx-cpu.github.io/ppal/">
 
-      <img src="ppal2.png" alt="PayPal / Card Icon" class="btn-icon">
-    </a>
+    <span class="hand">👆</span>
 
-    <a class="btn blue" href="https://august2024xx-cpu.github.io/anycryptopay2/">
-      <span class="hand">👆</span>
-      <span class="btn-text">
-        PROFIT BUY PIZZA COIN<br>WITH ANY CRYPTO HERE
-        <span class="sub">CLICK HERE TO BUY</span>
-      </span>
+    <span class="btn-text">
+      PROFIT BUY PIZZA COIN<br>WITH VISA, MC OR PAYPAL
+      <span class="sub">CLICK HERE TO BUY</span>
+    </span>
 
-      <!-- CURRENT GIF -->
-      <img src="click2.gif" alt="" class="click-gif">
+    <img src="click1.gif" alt="" class="click-gif">
+    <img src="click3.gif" alt="" class="click-gif">
 
-      <!-- NEW GIF SPACE -->
-      <img src="click4.gif" alt="" class="click-gif">
+    <img src="ppal2.png" alt="PayPal / Card Icon" class="btn-icon">
 
-      <img src="crypto2.png" alt="Crypto Icon" class="btn-icon">
-    </a>
+    <!-- BUTTON 1 ANIMATED PIZZA CHART -->
+    <div class="btn-chart-wrapper">
+      <svg viewBox="0 0 300 280">
+        <defs>
+          <marker id="arrow1" viewBox="0 0 10 10"
+            refX="6" refY="5" markerWidth="7"
+            markerHeight="7" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z"
+              fill="#39ff14"/>
+          </marker>
+        </defs>
 
-    <!-- SELF-CONTAINED 3RD BUTTON WITH CAROUSEL, NEON GREEN BORDER AND ANIMATED PROFIT DEMO -->
-    <a class="btn green" href="https://www.pizza-coin.org/">
-      <span class="hand">👆</span>
-      <span class="btn-text">
-        PROFIT WITH<br>PIZZA COIN
-        <span class="sub">SEE PROFIT GROW</span>
-      </span>
+        <line x1="55" y1="35" x2="290" y2="35" class="grid-line"/>
+        <line x1="55" y1="105" x2="290" y2="105" class="grid-line"/>
+        <line x1="55" y1="175" x2="290" y2="175" class="grid-line"/>
+        <line x1="55" y1="245" x2="290" y2="245" class="grid-line"/>
 
-      <!-- SWIPEABLE PICTURE CAROUSEL -->
-      <div class="btn-slider-wrapper" id="btnSlider">
-        <div class="slider-arrow prev" id="slidePrev" onclick="event.preventDefault(); event.stopPropagation(); moveSlide(-1);">&#10094;</div>
-        <div class="slider-arrow next" id="slideNext" onclick="event.preventDefault(); event.stopPropagation(); moveSlide(1);">&#10095;</div>
-        
-        <img src="pic1.png" class="active" alt="Picture 1">
-        <img src="pic2.png" alt="Picture 2">
-        <img src="pic3.png" alt="Picture 3">
-        <img src="pic4.png" alt="Picture 4">
-      </div>
+        <text x="5" y="38" class="axis-text">$4,000</text>
+        <text x="5" y="108" class="axis-text">$3,000</text>
+        <text x="5" y="178" class="axis-text">$1,500</text>
+        <text x="5" y="248" class="axis-text">$1</text>
 
-      <!-- ANIMATED CHART DEMO -->
-      <div class="btn-chart-wrapper">
-        <svg viewBox="0 0 300 280">
-          <defs>
-            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#39ff14" filter="drop-shadow(0 0 2px #39ff14)" />
-            </marker>
-          </defs>
-          <line x1="55" y1="35" x2="290" y2="35" class="grid-line" />
-          <line x1="55" y1="105" x2="290" y2="105" class="grid-line" />
-          <line x1="55" y1="175" x2="290" y2="175" class="grid-line" />
-          <line x1="55" y1="245" x2="290" y2="245" class="grid-line" />
-          <text x="5" y="38" class="axis-text">$4,000</text>
-          <text x="5" y="108" class="axis-text">$3,000</text>
-          <text x="5" y="178" class="axis-text">$1,500</text>
-          <text x="5" y="248" class="axis-text">$1</text>
-          <polyline points="55,15 55,255 295,255" class="axis" marker-end="url(#arrow)" />
-          <path d="M 55 250 Q 140 230 180 150 T 285 35" class="chart-line" marker-end="url(#arrow)" />
-          <g class="pizza-tracker">
-            <text x="-13" y="8">🍕</text>
-          </g>
-        </svg>
-      </div>
+        <polyline points="55,15 55,255 295,255"
+          class="axis" marker-end="url(#arrow1)"/>
 
-      <!-- PROFIT COUNTER -->
-      <div class="btn-profit-display">
-        <div class="btn-profit-label">🍕 YOUR PROFIT BALANCE 🍕</div>
-        <div class="btn-counter-box">
-          $<span id="profitCounter">1</span>
-        </div>
-      </div>
-    </a>
-  </section>
+        <path d="M 55 250 Q 140 230 180 150 T 285 35"
+          class="chart-line" marker-end="url(#arrow1)"/>
 
-  <div class="notice">
-    🍕 ©️PIZZA COIN CRYPTO 🍕<br><br>
-    FOR PEOPLE WHO LIKE<br>
-    MORE CRYPTO 🪙 ✅<br>
-    MORE CASH   💵 ✅<br>
-    MORE PIZZA   🍕 ✅<br><br>
-    ALL ARE WELCOME 😀 ✅<br>
-  </div>
+        <g class="pizza-tracker">
+          <text x="-13" y="8">🍕</text>
+        </g>
+      </svg>
+    </div>
 
-  <div class="foot">
-    WWW.PIZZA-COIN.ORG
-  </div>
+    <!-- BUTTON 1 ANIMATED BALANCE -->
+    <div class="btn-profit-display">
+      <div class="btn-profit-label">🍕 YOUR PROFIT BALANCE 🍕</div>
+      <div class="btn-counter-box">$<span class="profitCounter">1</span></div>
+    </div>
+
+  </a>
+
+  <!-- BUTTON 2: ANY CRYPTO -->
+  <a class="btn blue" href="https://august2024xx-cpu.github.io/anycryptopay2/">
+
+    <span class="hand">👆</span>
+
+    <span class="btn-text">
+      PROFIT BUY PIZZA COIN<br>WITH ANY CRYPTO HERE
+      <span class="sub">CLICK HERE TO BUY</span>
+    </span>
+
+    <img src="click2.gif" alt="" class="click-gif">
+    <img src="click4.gif" alt="" class="click-gif">
+
+    <img src="crypto2.png" alt="Crypto Icon" class="btn-icon">
+
+    <!-- BUTTON 2 ANIMATED PIZZA CHART -->
+    <div class="btn-chart-wrapper">
+      <svg viewBox="0 0 300 280">
+        <defs>
+          <marker id="arrow2" viewBox="0 0 10 10"
+            refX="6" refY="5" markerWidth="7"
+            markerHeight="7" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z"
+              fill="#39ff14"/>
+          </marker>
+        </defs>
+
+        <line x1="55" y1="35" x2="290" y2="35" class="grid-line"/>
+        <line x1="55" y1="105" x2="290" y2="105" class="grid-line"/>
+        <line x1="55" y1="175" x2="290" y2="175" class="grid-line"/>
+        <line x1="55" y1="245" x2="290" y2="245" class="grid-line"/>
+
+        <text x="5" y="38" class="axis-text">$4,000</text>
+        <text x="5" y="108" class="axis-text">$3,000</text>
+        <text x="5" y="178" class="axis-text">$1,500</text>
+        <text x="5" y="248" class="axis-text">$1</text>
+
+        <polyline points="55,15 55,255 295,255"
+          class="axis" marker-end="url(#arrow2)"/>
+
+        <path d="M 55 250 Q 140 230 180 150 T 285 35"
+          class="chart-line" marker-end="url(#arrow2)"/>
+
+        <g class="pizza-tracker">
+          <text x="-13" y="8">🍕</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- BUTTON 2 ANIMATED BALANCE -->
+    <div class="btn-profit-display">
+      <div class="btn-profit-label">🍕 YOUR PROFIT BALANCE 🍕</div>
+      <div class="btn-counter-box">$<span class="profitCounter">1</span></div>
+    </div>
+
+  </a>
+
+  <!-- BUTTON 3: PIZZA COIN -->
+  <a class="btn green" href="https://www.pizza-coin.org/">
+
+    <span class="hand">👆</span>
+
+    <span class="btn-text">
+      PROFIT WITH<br>PIZZA COIN
+      <span class="sub">SEE PROFIT GROW</span>
+    </span>
+
+    <!-- EXISTING BUTTON 3 CAROUSEL -->
+    <div class="btn-slider-wrapper" id="btnSlider">
+
+      <div class="slider-arrow prev" id="slidePrev"
+        onclick="event.preventDefault(); event.stopPropagation(); moveSlide(-1);">&#10094;</div>
+
+      <div class="slider-arrow next" id="slideNext"
+        onclick="event.preventDefault(); event.stopPropagation(); moveSlide(1);">&#10095;</div>
+
+      <img src="pic1.png" class="active" alt="Picture 1">
+      <img src="pic2.png" alt="Picture 2">
+      <img src="pic3.png" alt="Picture 3">
+      <img src="pic4.png" alt="Picture 4">
+
+    </div>
+
+    <!-- BUTTON 3 ANIMATED PIZZA CHART -->
+    <div class="btn-chart-wrapper">
+      <svg viewBox="0 0 300 280">
+        <defs>
+          <marker id="arrow3" viewBox="0 0 10 10"
+            refX="6" refY="5" markerWidth="7"
+            markerHeight="7" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z"
+              fill="#39ff14"/>
+          </marker>
+        </defs>
+
+        <line x1="55" y1="35" x2="290" y2="35" class="grid-line"/>
+        <line x1="55" y1="105" x2="290" y2="105" class="grid-line"/>
+        <line x1="55" y1="175" x2="290" y2="175" class="grid-line"/>
+        <line x1="55" y1="245" x2="290" y2="245" class="grid-line"/>
+
+        <text x="5" y="38" class="axis-text">$4,000</text>
+        <text x="5" y="108" class="axis-text">$3,000</text>
+        <text x="5" y="178" class="axis-text">$1,500</text>
+        <text x="5" y="248" class="axis-text">$1</text>
+
+        <polyline points="55,15 55,255 295,255"
+          class="axis" marker-end="url(#arrow3)"/>
+
+        <path d="M 55 250 Q 140 230 180 150 T 285 35"
+          class="chart-line" marker-end="url(#arrow3)"/>
+
+        <g class="pizza-tracker">
+          <text x="-13" y="8">🍕</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- BUTTON 3 ANIMATED BALANCE -->
+    <div class="btn-profit-display">
+      <div class="btn-profit-label">🍕 YOUR PROFIT BALANCE 🍕</div>
+      <div class="btn-counter-box">$<span id="profitCounter">1</span></div>
+    </div>
+
+  </a>
+
+</section>
+
+<div class="notice">
+  🍕 ©️PIZZA COIN CRYPTO 🍕<br><br>
+  FOR PEOPLE WHO LIKE<br>
+  MORE CRYPTO 🪙 ✅<br>
+  MORE CASH 💵 ✅<br>
+  MORE PIZZA 🍕 ✅<br><br>
+  ALL ARE WELCOME 😀 ✅<br>
+</div>
+
+<div class="foot">
+  WWW.PIZZA-COIN.ORG
+</div>
+
 </div>
 
 <script>
+/* HAMBURGER MENU */
 const h = document.getElementById("hamb");
 const m = document.getElementById("menu");
 
 h.onclick = function(e){
   e.stopPropagation();
   let open = m.classList.toggle("open");
-  h.setAttribute("aria-expanded", open);
+  h.setAttribute("aria-e/xpanded", open);
 };
 
 document.onclick = function(e){
@@ -640,87 +788,102 @@ document.onclick = function(e){
   }
 };
 
-/* PROFIT COUNTER SCRIPT */
-const counterEl = document.getElementById('profitCounter');
+/* PROFIT COUNTER SCRIPT — ALL 3 BUTTONS */
+const counterEls = document.querySelectorAll(
+  '.btn-profit-display .profitCounter, #profitCounter'
+);
+
 const startVal = 1;
 const endVal = 4000;
 const duration = 4000;
-let startTime = null;
 
-function updateCounter(timestamp) {
-  if (!startTime) startTime = timestamp;
-  const progress = Math.min((timestamp - startTime) / duration, 1);
-  const currentVal = Math.floor(startVal + Math.pow(progress, 2.5) * (endVal - startVal));
-  
-  if (counterEl) {
+function animateCounter(counterEl){
+  let startTime = null;
+
+  function updateCounter(timestamp){
+    if(startTime === null) startTime = timestamp;
+
+    const progress = Math.min(
+      (timestamp - startTime) / duration, 1
+    );
+
+    const currentVal = Math.floor(
+      startVal +
+      Math.pow(progress, 2.5) * (endVal - startVal)
+    );
+
     counterEl.textContent = currentVal.toLocaleString();
-  }
-  
-  if (progress < 1) {
-    requestAnimationFrame(updateCounter);
-  } else {
-    setTimeout(() => {
-      startTime = null;
+
+    if(progress < 1){
       requestAnimationFrame(updateCounter);
-    }, 50);
+    }else{
+      setTimeout(()=>{
+        startTime = null;
+        requestAnimationFrame(updateCounter);
+      },50);
+    }
   }
+
+  requestAnimationFrame(updateCounter);
 }
 
-requestAnimationFrame(updateCounter);
+counterEls.forEach(animateCounter);
 
-/* 3RD BUTTON CAROUSEL LOGIC */
+/* BUTTON 3 CAROUSEL LOGIC */
 let currentSlide = 0;
 const slides = document.querySelectorAll('#btnSlider img');
 const totalSlides = slides.length;
 let slideInterval;
 
-function showSlide(index) {
-  slides.forEach((img, i) => {
-    img.classList.toggle('active', i === index);
+function showSlide(index){
+  slides.forEach((img,i)=>{
+    img.classList.toggle('active',i===index);
   });
 }
 
-function moveSlide(direction) {
+function moveSlide(direction){
   currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
   showSlide(currentSlide);
   resetTimer();
 }
 
-function startAutoSlide() {
-  slideInterval = setInterval(() => {
+function startAutoSlide(){
+  slideInterval = setInterval(()=>{
     currentSlide = (currentSlide + 1) % totalSlides;
     showSlide(currentSlide);
-  }, 10000);
+  },10000);
 }
 
-function resetTimer() {
+function resetTimer(){
   clearInterval(slideInterval);
   startAutoSlide();
 }
 
-// SWIPE GESTURES FOR MOBILE/ANDROID
+/* MOBILE / ANDROID SWIPE GESTURES */
 const sliderEl = document.getElementById('btnSlider');
 let touchStartX = 0;
 let touchEndX = 0;
 
-if (sliderEl) {
-  sliderEl.addEventListener('touchstart', (e) => {
+if(sliderEl){
+  sliderEl.addEventListener('touchstart',(e)=>{
     touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
+  },{passive:true});
 
-  sliderEl.addEventListener('touchend', (e) => {
+  sliderEl.addEventListener('touchend',(e)=>{
     touchEndX = e.changedTouches[0].screenX;
-    if (touchEndX < touchStartX - 30) {
-      moveSlide(1); 
-    } else if (touchEndX > touchStartX + 30) {
+
+    if(touchEndX < touchStartX - 30){
+      moveSlide(1);
+    }else if(touchEndX > touchStartX + 30){
       moveSlide(-1);
     }
-  }, { passive: true });
+  },{passive:true});
 }
 
-// INITIALIZE SLIDER
+/* INITIALIZE CAROUSEL */
 showSlide(currentSlide);
 startAutoSlide();
 </script>
+
 </body>
 </html>
